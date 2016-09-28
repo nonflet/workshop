@@ -1,0 +1,20 @@
+---
+
+- name: Download chronograf package
+  get_url: url={{ chronograf_download_url }} dest={{ chronograf_download_dir }}/{{ chronograf_archive }}
+
+- name: Install chronograf
+  apt: deb="{{ chronograf_download_dir }}/{{ chronograf_archive }}"
+  notify: restart chronograf
+
+- name: Start chronograf
+  service: name=chronograf enabled=yes state=started
+
+# - name: Congifure teletraf
+#   template: >-
+#     src=chronograf.conf.j2
+#     dest=/etc/opt/chronograf/chronograf.conf
+#     mode=0644
+#     owner=root
+#     group=root
+#   notify: restart chronograf

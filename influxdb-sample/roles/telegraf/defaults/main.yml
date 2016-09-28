@@ -1,0 +1,8 @@
+---
+
+telegraf_version: 0.2.3
+telegraf_archive: "telegraf_{{ telegraf_version }}_amd64.deb"
+telegraf_download_url: "http://get.influxdb.org/telegraf/{{ telegraf_archive }}"
+telegraf_download_dir: /tmp
+
+telegraf_influxdb_url: "http://localhost:8086"

@@ -1,0 +1,20 @@
+---
+
+- name: Download telegraf package
+  get_url: url={{ telegraf_download_url }} dest={{ telegraf_download_dir }}/{{ telegraf_archive }}
+
+- name: Install telegraf
+  apt: deb="{{ telegraf_download_dir }}/{{ telegraf_archive }}"
+  notify: restart telegraf
+
+- name: Start telegraf
+  service: name=telegraf enabled=yes state=started
+
+- name: Congifure teletraf
+  template: >-
+    src=telegraf.conf.j2
+    dest=/etc/opt/telegraf/telegraf.conf
+    mode=0644
+    owner=root
+    group=root
+  notify: restart telegraf

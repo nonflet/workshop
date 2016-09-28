@@ -1,0 +1,7 @@
+---
+
+chronograf_version: 0.3.2
+chronograf_bind: "0.0.0.0:10000"
+chronograf_archive: "chronograf_{{ chronograf_version }}_amd64.deb"
+chronograf_download_url: "https://s3.amazonaws.com/get.influxdb.org/chronograf/{{ chronograf_archive }}"
+chronograf_download_dir: /tmp

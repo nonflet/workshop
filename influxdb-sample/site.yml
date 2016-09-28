@@ -1,0 +1,18 @@
+---
+
+- name: setup influxdb server
+  hosts: influxdb
+  sudo: yes
+  vars:
+    influxdb_ver: 0.9.5.1
+  roles:
+    - mtchavez.influxdb
+    - chronograf
+
+- name: setup hosts
+  hosts: hosts
+  sudo: yes
+  vars:
+    telegraf_influxdb_url: "http://192.168.50.64:8086"
+  roles:
+    - telegraf
