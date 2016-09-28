@@ -6,4 +6,4 @@
 
 # Ansible.
 *.retry
-*/roles/*
+
